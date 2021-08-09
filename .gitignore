@@ -1,0 +1,11 @@
+__pycache__
+my_translate_text.py
+1.txt
+*.local.*
+
+.vscode/*
+*.log
+*.log.*
+*~
+/debug
+/debug.*
