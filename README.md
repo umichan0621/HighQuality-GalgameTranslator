@@ -22,9 +22,18 @@ pip install mecab-python3
 ```
 
 ## 提取游戏内文本
+- 云翻肋手用于提取游戏文本，目前支持的会社有Bishop、WillPlus、YU-RIS、Kaguya、RealLive、PJADV、AliceSoft
 - [云翻肋手V0.7](https://pan.baidu.com/share/init?surl=lTMMkPz9PIlmMQQII-uK-Q)
+- 提取码:0z9q
+- winhex用于查询游戏文本在文件内的偏移量
+- [winhex](https://pan.baidu.com/s/10XaxPtgCZhY5eRxca2t7FQ)
+- 提取码:eq2w
+
 ## 如何协助完成高质量的Galgame机器翻译
 - 协助开发Python翻译脚本
 - 使用内置的词频统计工具count_word_frequency.py统计未收录的通用高频词
+    - 只会将第二列不为空，即有中文翻译的词加入字典
+    - 对于机器翻译完全正确的词语请放在excel的[过滤]页下
 - 统计某部作品的专有词
+    - 对于某部作品的专有词请放在excel的[特殊]页下
 - 协助完成字典内收录词语的翻译
