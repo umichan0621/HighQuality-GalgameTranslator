@@ -23,8 +23,8 @@ pip install mecab-python3
 ```
 
 ## 提取游戏内文本
-- 云翻肋手用于提取游戏文本，目前支持的会社有Bishop、WillPlus、YU-RIS、Kaguya、RealLive、PJADV、AliceSoft
-- [云翻肋手V0.7(提取码:0z9q)](https://pan.baidu.com/share/init?surl=lTMMkPz9PIlmMQQII-uK-Q)
+- Tiny翻译肋手用于提取游戏文本，目前支持的会社有Bishop、WillPlus、YU-RIS、Kaguya、RealLive、PJADV、AliceSoft
+- [Tiny翻译肋手(提取码:fo2c)](https://pan.baidu.com/s/1aDaKYD96wW0z9ezfvdUfOA#list/path=%2F)
 
 - winhex用于查询游戏文本在文件内的偏移量
 - [winhex(提取码:eq2w)](https://pan.baidu.com/s/10XaxPtgCZhY5eRxca2t7FQ)
