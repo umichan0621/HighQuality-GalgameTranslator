@@ -38,3 +38,8 @@ pip install mecab-python3
 - 统计某部作品的专有词
     - 对于某部作品的专有词请放在excel的[特殊]页下
 - 协助完成字典内收录词语的翻译
+
+## 协助完善词表
+- 请确保可以使用Google
+- [Google在线文档](https://docs.google.com/spreadsheets/d/1anIXXcQiWM1ke6veDIBHw4kmheULIdy7tGXPLjScIcU/edit#gid=1495071713)
+- 需要协助开发可以申请修改权限，但不要随意胡乱修改文档
