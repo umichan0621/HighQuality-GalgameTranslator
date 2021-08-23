@@ -43,3 +43,4 @@ pip install mecab-python3
 - 请确保可以使用Google
 - [Google在线文档](https://docs.google.com/spreadsheets/d/1anIXXcQiWM1ke6veDIBHw4kmheULIdy7tGXPLjScIcU/edit#gid=1495071713)
 - 需要协助开发可以申请修改权限，但不要随意胡乱修改文档
+- [在线聊天室](https://gitter.im/HighQuality-GalgameTranslator/community)，开发和使用相关问题讨论
