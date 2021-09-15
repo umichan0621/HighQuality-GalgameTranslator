@@ -1,4 +1,4 @@
-from function.machine_translator import TextTranslator
+from function.general_text_processor import TextTranslator
 
 api_id = "api_id"
 api_key = "api_key"
