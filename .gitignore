@@ -1,5 +1,5 @@
 __pycache__
-.txt
-.ini
-.xlsx
+*.txt
+*.ini
+*.xlsx
 .idea
