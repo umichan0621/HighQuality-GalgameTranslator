@@ -1,11 +1,13 @@
 __pycache__
 my_translate_text.py
-1.txt
+.txt
+.ini
+.xlsx
 *.local.*
-
 .vscode/*
 *.log
 *.log.*
 *~
 /debug
 /debug.*
+.idea
