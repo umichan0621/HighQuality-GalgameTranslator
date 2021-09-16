@@ -21,7 +21,11 @@ pip install xlrd
 ```
 pip install mecab-python3
 ```
-
+4. PyQt5
+```
+pip install PyQt5
+pip install PyQt5-tools
+```
 ## 提取游戏内文本
 - Tiny翻译肋手用于提取游戏文本，目前支持的会社有Bishop、WillPlus、YU-RIS、Kaguya、RealLive、PJADV、AliceSoft
 - [Tiny翻译肋手(提取码:fo2c)](https://pan.baidu.com/s/1aDaKYD96wW0z9ezfvdUfOA#list/path=%2F)

@@ -24,9 +24,9 @@ class Setting(QWidget):
         self.__ui_setting.settingWidget.hide()
 
     def LoadAPIIDAndKey(self):
-        config_file = open("../config.ini", 'a+', encoding="utf-8")
+        config_file = open("config.ini", 'a+', encoding="utf-8")
         config_file.write("")
-        config_file = open("../config.ini", 'r', encoding="utf-8")
+        config_file = open("config.ini", 'r', encoding="utf-8")
         # 读取config文件并写入
         content = config_file.readlines()
         if len(content) >= 3:
