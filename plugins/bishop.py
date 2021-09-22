@@ -1,39 +1,7 @@
 from function.excel_parser import ExcelParser
 from function.general_text_processor import GeneralTextProcessor
 from machine_translator.general_translator import GeneralTranslator
-
-
-# 针对不同游戏做特殊处理
-def ModifySourceSpecialText(text):
-    res = text
-    res = res.replace('\\n', '←')  # 删除翻译文本的换行符
-    res = res.replace('\n', '')  # 删除文本换行的换行符
-    res = res.replace('\A', 'AX-01')  # 暂时替换主角名字为A
-    res = res.replace('\\s', '')  # 删除字体变小占位符
-    res = res.replace('\\b', '')  # 暂时替换加粗占位符为箭头
-    res = res.replace('\\B', '')  # 删掉部分加粗
-    res = res.replace('<color ff00ff>', '')  # 颜色
-    res = res.replace('</color>', '')  # 颜色
-    return res
-
-
-# 针对不同游戏做特殊处理的复原
-def RecoverTransSpecialText(source_text, target_text):
-    res = target_text
-    res = res.replace('←', '\\n')
-    res = res.replace('AX-01', '\A')  # 恢复主角名字为占位符
-    res = res.replace('“”', '”')  # 替换有问题的引号
-    res = res.replace('……。', '……')  # 替换有问题的省略号
-    # 恢复颜色
-    if source_text.find("<color") != -1:
-        res = "<color ff00ff>" + res + "</color>"
-    # 恢复加粗
-    if source_text.find("\\b") != -1:
-        res = "\\b" + res
-    # 恢复小号字体
-    if source_text.find("\\s") != -1:
-        res = "\\s" + res
-    return res
+from function.special_text_processor import SpecialTextProcessor
 
 
 class BishopTranslator:
@@ -42,6 +10,7 @@ class BishopTranslator:
     __total_line = 0
     __cur_line = 0
     __general_text_processor = 0
+    __special_text_processor = 0
     __general_machine_translator = 0
 
     def SetGeneralTrans(self, api_id, api_key):
@@ -51,9 +20,18 @@ class BishopTranslator:
     def SetWordDicPath(self, word_dic_path):
         excel_parser = ExcelParser()
         excel_parser.SetExcelPath(word_dic_path)
-        word_map = excel_parser.GetWordMap()
+        # 读取通用词表和特殊词表
+        word_map = {}
+        excel_parser.GetWordMap(word_map)
         self.__general_text_processor = GeneralTextProcessor()
         self.__general_text_processor.SetWordMap(word_map)
+        # 读取特殊处理词表
+        handle_step1 = {}
+        handle_step2 = {}
+        handle_step3 = {}
+        excel_parser.GetSpecialWordMap(handle_step1, handle_step2, handle_step3)
+        self.__special_text_processor = SpecialTextProcessor()
+        self.__special_text_processor.SetSpecialWordMap(handle_step1, handle_step2, handle_step3)
 
     def SetSourceTextPath(self, file_path):
         # 读取原文并保存为数组
@@ -76,7 +54,6 @@ class BishopTranslator:
     def TranslateSourceText(self):
         while self.__cur_line < self.__total_line:
             self.HandleText()
-            # time.sleep(0.1)
 
     def HandleText(self):
         source_text = self.__source_file_content[self.__cur_line]
@@ -93,7 +70,7 @@ class BishopTranslator:
 
     def __HandleSourceText(self, source_text):
         # 文本特殊处理
-        res = ModifySourceSpecialText(source_text)
+        res = self.__special_text_processor.ModifySourceSpecialText(source_text)
         # 文本通用处理
         res = self.__general_text_processor.ModifySourceText(res)
         # 机器翻译文本
@@ -101,7 +78,7 @@ class BishopTranslator:
         # 复原通用处理
         res = self.__general_text_processor.RecoverTransText(res)
         # 复原特殊处理
-        res = RecoverTransSpecialText(source_text, res)
+        res = self.__special_text_processor.RecoverTransSpecialText(source_text, res)
         self.__output_file.write(res + '\n')
         # res = res.replace('\n', '')  # 删除文本换行的换行符
         return res

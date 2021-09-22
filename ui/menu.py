@@ -1,6 +1,5 @@
-import sys
-from PyQt5.Qt import *
 from ui.ui_menu import Ui_Menu
+from PyQt5.Qt import QWidget
 
 
 class Menu(QWidget):
@@ -9,7 +8,6 @@ class Menu(QWidget):
     def Init(self):
         self.__ui_menu = Ui_Menu()
         self.__ui_menu.setupUi(self)
-        # self.__ui_menu.settingButton.clicked.connect(self.Hide)
 
     def GetMenuWidget(self):
         return self.__ui_menu

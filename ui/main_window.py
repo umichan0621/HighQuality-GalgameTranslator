@@ -1,6 +1,7 @@
 import sys
 import time
-from PyQt5.Qt import *
+from PyQt5.Qt import QApplication
+from PyQt5.Qt import QWidget
 from ui.menu import Menu
 from ui.setting import Setting
 from ui.machine_trans import MachineTrans
@@ -55,16 +56,29 @@ class MainWindow:
 
     def PluginBishop(self):
         bishop_translator = BishopTranslator()
+        # 读取原文路径
         src_text_path = self.__machine_trans.GetMachineTransWidget().srcFilePathEdit.text()
+        self.__machine_trans.Print("开始读取原文文件...")
         if len(src_text_path) > 4 and src_text_path[len(src_text_path) - 4:len(src_text_path)] == ".txt":
             bishop_translator.SetSourceTextPath(src_text_path)
+            self.__machine_trans.Print("成功读取原文文件")
+        else:
+            self.__machine_trans.Print("原文文件路径错误")
+            return
+        # 读取词表路径
         word_dic_path = self.__setting.GetSettingWidget().wordsDicEdit.text().replace("\n", "")
-        print(word_dic_path[len(word_dic_path) - 5:5])
+        self.__machine_trans.Print("开始读取词表...")
         if len(word_dic_path) > 5 and word_dic_path[len(word_dic_path) - 5:len(word_dic_path)] == ".xlsx":
             bishop_translator.SetWordDicPath(word_dic_path)
+            self.__machine_trans.Print("成功载入词表")
+        else:
+            self.__machine_trans.Print("词表路径错误")
+            return
+        self.__machine_trans.Print("开始读取翻译API的ID和Key...")
         api_id = self.__setting.GetSettingWidget().txAPIIDEdit.text().replace("\n", "")
         api_key = self.__setting.GetSettingWidget().txAPIKeyEdit.text().replace("\n", "")
         bishop_translator.SetGeneralTrans(api_id, api_key)
+        self.__machine_trans.Print("开始机器翻译...")
         while bishop_translator.GetCurLine() < bishop_translator.GetTotalLine():
             res = bishop_translator.HandleText()
             if len(res) == 2:

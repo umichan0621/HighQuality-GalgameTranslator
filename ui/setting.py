@@ -1,6 +1,7 @@
-import sys
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget
+from PyQt5.Qt import QFileDialog
 from ui.ui_setting import Ui_Setting
+from PyQt5.Qt import QLineEdit
 
 
 class Setting(QWidget):
