@@ -5,7 +5,7 @@ from PyQt5.Qt import QWidget
 from ui_function.menu import Menu
 from ui_function.setting import Setting
 from ui_function.machine_trans import MachineTrans
-from plugins.bishop import BishopTranslator
+from plugins.bishop_trans import BishopTranslator
 
 
 class MainWindow:
@@ -57,12 +57,13 @@ class MainWindow:
     def PluginBishop(self):
         bishop_translator = BishopTranslator()
         # 读取原文路径
-        src_text_path = self.__machine_trans.GetMachineTransWidget().srcFilePathEdit.text()
+        src_text_path = self.__setting.GetSettingWidget().srcFilePathEdit.text().replace("\n", "")
         self.__machine_trans.Print("开始读取原文文件...")
         if len(src_text_path) > 4 and src_text_path[len(src_text_path) - 4:len(src_text_path)] == ".txt":
             bishop_translator.SetSourceTextPath(src_text_path)
             self.__machine_trans.Print("成功读取原文文件")
         else:
+            print(src_text_path)
             self.__machine_trans.Print("原文文件路径错误")
             return
         # 读取词表路径
