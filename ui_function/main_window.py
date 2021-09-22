@@ -2,9 +2,9 @@ import sys
 import time
 from PyQt5.Qt import QApplication
 from PyQt5.Qt import QWidget
-from ui.menu import Menu
-from ui.setting import Setting
-from ui.machine_trans import MachineTrans
+from ui_function.menu import Menu
+from ui_function.setting import Setting
+from ui_function.machine_trans import MachineTrans
 from plugins.bishop import BishopTranslator
 
 
@@ -78,13 +78,18 @@ class MainWindow:
         api_id = self.__setting.GetSettingWidget().txAPIIDEdit.text().replace("\n", "")
         api_key = self.__setting.GetSettingWidget().txAPIKeyEdit.text().replace("\n", "")
         bishop_translator.SetGeneralTrans(api_id, api_key)
-        self.__machine_trans.Print("开始机器翻译...")
+        self.__machine_trans.Print("开始Bishop机器翻译...")
         while bishop_translator.GetCurLine() < bishop_translator.GetTotalLine():
             res = bishop_translator.HandleText()
             if len(res) == 2:
+                # 机器翻译API发生错误
+                if res[1] == "ERROR":
+                    self.__machine_trans.Print("机器翻译API发生错误，请检查API的ID和Key是否正确")
+                    return
                 self.__machine_trans.Print(res[0].replace("\n", ""))
                 self.__machine_trans.Print(res[1])
                 self.__machine_trans.Print("")
             else:
                 self.__machine_trans.Print("Address:"+res[0][11:18])
             time.sleep(0.1)
+        self.__machine_trans.Print("Bishop机器翻译完成")
