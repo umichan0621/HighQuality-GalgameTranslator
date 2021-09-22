@@ -21,6 +21,9 @@ class TencentMachineTranslator:
     def Translate(self, source_text):
         params = '{\"SourceText\":\"' + source_text + '\",\"Source\":\"ja\",\"Target\":\"zh\",\"ProjectId\":0}'
         self.req.from_json_string(params)
-        resp = self.client.TextTranslate(self.req)
-        dic = json.loads(resp.to_json_string())
-        return dic["TargetText"]
+        try:
+            resp = self.client.TextTranslate(self.req)
+            dic = json.loads(resp.to_json_string())
+            return dic["TargetText"]
+        except Exception:
+            return "ERROR"

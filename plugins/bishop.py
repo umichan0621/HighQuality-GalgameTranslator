@@ -75,6 +75,8 @@ class BishopTranslator:
         res = self.__general_text_processor.ModifySourceText(res)
         # 机器翻译文本
         res = self.__general_machine_translator.Translate(res)
+        if res == "ERROR":
+            return "ERROR"
         # 复原通用处理
         res = self.__general_text_processor.RecoverTransText(res)
         # 复原特殊处理
