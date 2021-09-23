@@ -12,6 +12,8 @@ class ExcelParser:
         book = xlrd.open_workbook(self.file_path)
         for sheet in book.sheets():
             sheet = book.sheet_by_name(sheet.name)
+            if sheet.name == "特殊处理":
+                continue
             for i in range(sheet.nrows):
                 if i != 0:
                     word_set.add(sheet.row_values(i)[0])
