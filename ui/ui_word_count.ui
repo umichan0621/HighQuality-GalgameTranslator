@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MachineTrans</class>
- <widget class="QWidget" name="MachineTrans">
+ <class>WordCount</class>
+ <widget class="QWidget" name="WordCount">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="machineTransWidget" native="true">
+  <widget class="QWidget" name="wordCountWidget" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -36,10 +36,10 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="browserWidget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QTextBrowser" name="machineTransBrowser">
+        <widget class="QTextBrowser" name="wordCountBrowser">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
            <horstretch>0</horstretch>
@@ -48,7 +48,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>920</width>
+           <width>900</width>
            <height>520</height>
           </size>
          </property>
@@ -64,7 +64,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="startTransWidget" native="true">
+     <widget class="QWidget" name="startCountWidget" native="true">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -92,7 +92,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="startTransButton">
+        <widget class="QPushButton" name="startCountButton">
          <property name="minimumSize">
           <size>
            <width>80</width>
@@ -106,7 +106,7 @@
           </size>
          </property>
          <property name="text">
-          <string>开始翻译</string>
+          <string>开始统计</string>
          </property>
         </widget>
        </item>

@@ -58,6 +58,11 @@ class Ui_Menu(object):
         self.settingButton.setMaximumSize(QtCore.QSize(80, 25))
         self.settingButton.setObjectName("settingButton")
         self.horizontalLayout.addWidget(self.settingButton)
+        self.pushButton = QtWidgets.QPushButton(self.menuWidget)
+        self.pushButton.setMinimumSize(QtCore.QSize(80, 25))
+        self.pushButton.setMaximumSize(QtCore.QSize(80, 25))
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout.addWidget(self.pushButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
 
@@ -70,3 +75,4 @@ class Ui_Menu(object):
         self.machineTranslateButton.setText(_translate("Menu", "机器翻译"))
         self.wordCountButton.setText(_translate("Menu", "词频统计"))
         self.settingButton.setText(_translate("Menu", "设置"))
+        self.pushButton.setText(_translate("Menu", "关于"))
