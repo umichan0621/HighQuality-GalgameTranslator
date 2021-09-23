@@ -15,11 +15,12 @@ class MachineTrans(QWidget):
         self.__font = QtGui.QFont()
         self.__font.setFamily("宋体")
         self.__font.setPointSize(16)
+        self.Hide()
 
     def Print(self, text):
-        self.__ui_machine_trans.textBrowser.setFont(self.__font)
-        self.__ui_machine_trans.textBrowser.append(text)
-        self.__ui_machine_trans.textBrowser.repaint()
+        self.__ui_machine_trans.machineTransBrowser.setFont(self.__font)
+        self.__ui_machine_trans.machineTransBrowser.append(text)
+        self.__ui_machine_trans.machineTransBrowser.repaint()
 
     def GetMachineTransWidget(self):
         return self.__ui_machine_trans

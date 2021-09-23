@@ -1,7 +1,7 @@
 from function.excel_parser import ExcelParser
 from function.general_text_processor import GeneralTextProcessor
-from machine_translator.general_translator import GeneralTranslator
 from function.special_text_processor import SpecialTextProcessor
+from machine_translator.general_translator import GeneralTranslator
 
 
 class BishopTranslator:

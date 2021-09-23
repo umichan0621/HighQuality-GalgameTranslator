@@ -21,7 +21,6 @@ class Setting(QWidget):
         self.LoadAPIIDAndKey()
         self.Hide()
 
-
     def GetSettingWidget(self):
         return self.__ui_setting
 
