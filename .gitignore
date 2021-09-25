@@ -7,3 +7,4 @@ dist
 *.xlsx
 *.spec
 *.exe
+!/requirements.txt

@@ -1,0 +1,5 @@
+PyQt5
+PyQt5-tools
+xlrd
+mecab-python3
+tencentcloud-sdk-python
