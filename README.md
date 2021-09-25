@@ -8,23 +8,23 @@
 - 基于词频统计，可以收录文本内的通用高频词
 - 基于词频统计，也可以收录文本内的特殊词
 
+## 具体功能
+- 已完成
+  - 针对Bishop游戏的机器翻译√
+  - 针对Bishop游戏的词频统计√
+  - 腾讯翻译API√
+- 待完成
+  - 针对Kaguya游戏的机器翻译
+  - 针对Kaguya游戏的词频统计
+  - Google翻译API
+  - 人工翻译校对工具
+
 ## 依赖库
-1. TX机器翻译API
+- Shift + 右键 点击项目文件夹空白处
+- 在此处打开命令窗口(打开Powershell窗口) 
+- 在其中运行
 ```
-pip install --upgrade tencentcloud-sdk-python
-```
-2. excel读取
-```
-pip install xlrd
-```
-3. 日语分词
-```
-pip install mecab-python3
-```
-4. PyQt5
-```
-pip install PyQt5
-pip install PyQt5-tools
+py -m pip install -r requirements.txt
 ```
 ## 提取游戏内文本
 - Tiny翻译肋手用于提取游戏文本，目前支持的会社有Bishop、WillPlus、YU-RIS、Kaguya、RealLive、PJADV、AliceSoft
