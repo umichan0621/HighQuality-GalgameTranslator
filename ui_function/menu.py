@@ -1,13 +1,14 @@
-from ui.ui_menu import Ui_Menu
 from PyQt5.Qt import QWidget
+from ui.ui_menu import Ui_Menu
 
 
 class Menu(QWidget):
-    __ui_menu = 0
 
-    def Init(self):
+    def __init__(self, parent):
+        super().__init__()
         self.__ui_menu = Ui_Menu()
         self.__ui_menu.setupUi(self)
+        self.__ui_menu.menuWidget.setParent(parent)
 
     def GetMenuWidget(self):
         return self.__ui_menu

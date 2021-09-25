@@ -2,8 +2,8 @@ import random
 
 
 def GenRandomStr():
-    res = random.choice('CDRFGHIJKLMNOPQRSUVWXYZ')
-    res += random.choice('CDRFGHIJKLMNOPQRSUVWXYZ')
+    res = random.choice('UXYZ')
+    res += random.choice('CRFGHIJKLMNQRSUW')
     res += '-'
     res += random.choice('1234567890')
     res += random.choice('1234567890')
