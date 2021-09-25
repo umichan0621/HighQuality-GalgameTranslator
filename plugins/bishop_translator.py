@@ -32,7 +32,7 @@ class BishopTranslator(QThread):
         self.__word_dic_path = word_dic_path
         self.__src_text_path = src_text_path
 
-    def LoadWordDic(self):
+    def __LoadWordDic(self):
         excel_parser = ExcelParser()
         excel_parser.SetExcelPath(self.__word_dic_path)
         # 读取通用词表和特殊词表
@@ -46,7 +46,7 @@ class BishopTranslator(QThread):
         excel_parser.GetSpecialWordMap(handle_step1, handle_step2, handle_step3)
         self.__special_text_processor.SetSpecialWordMap(handle_step1, handle_step2, handle_step3)
 
-    def LoadTxtFile(self):
+    def __LoadTxtFile(self):
         # 读取原文并保存为数组
         source_file = open(self.__src_text_path, 'r', encoding="utf-16le")
         self.__source_file_content = source_file.readlines()
@@ -58,7 +58,7 @@ class BishopTranslator(QThread):
         # 读取译文文件行数
         self.__cur_line = len(open(target_path, 'r', encoding="utf-16le").readlines())
 
-    def HandleText(self):
+    def __HandleText(self):
         source_text = self.__source_file_content[self.__cur_line]
         # 偶数行是标记行
         if self.__cur_line % 2 == 0:
@@ -87,14 +87,13 @@ class BishopTranslator(QThread):
         self.__output_file.write(res + '\n')
         return res
 
-    def Trans(self):
+    def run(self):
         self.print_signal.emit("开始读取词表...")
-        self.LoadWordDic()
-        self.LoadTxtFile()
+        self.__LoadWordDic()
+        self.__LoadTxtFile()
         self.print_signal.emit("开始Bishop机器翻译...")
         while self.__cur_line < self.__total_line:
-            res = self.HandleText()
-            print(res)
+            res = self.__HandleText()
             if len(res) == 2:
                 # 机器翻译API发生错误
                 if res[1] == "ERROR":
