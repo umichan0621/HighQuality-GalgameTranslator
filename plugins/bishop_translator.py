@@ -16,8 +16,8 @@ class BishopTranslator(QThread):
         self.__special_text_processor = SpecialTextProcessor()
         self.__word_dic_path = ""
         self.__src_text_path = ""
+        self.__target_path = ""
         self.__source_file_content = []  # 读取原文并保存为数组
-        self.__output_file = 0  # 输出文件
         self.__total_line = 0
         self.__cur_line = 0
 
@@ -52,17 +52,20 @@ class BishopTranslator(QThread):
         self.__source_file_content = source_file.readlines()
         self.__total_line = len(self.__source_file_content)
         # 打开译文文件，位置在原文文件路径下，后缀_zh
-        target_path = self.__src_text_path.replace(".txt", "_zh.txt")
-        self.__output_file = open(target_path, 'a+', encoding="utf-16le")
-        self.__output_file.write("")
+        self.__target_path = self.__src_text_path.replace(".txt", "_zh.txt")
+        output_file = open(self.__target_path, 'a+', encoding="utf-16le")
+        output_file.write("")
+        output_file.close()
         # 读取译文文件行数
-        self.__cur_line = len(open(target_path, 'r', encoding="utf-16le").readlines())
+        self.__cur_line = len(open(self.__target_path, 'r', encoding="utf-16le").readlines())
 
     def __HandleText(self):
         source_text = self.__source_file_content[self.__cur_line]
         # 偶数行是标记行
         if self.__cur_line % 2 == 0:
-            self.__output_file.write(source_text.replace('0}', '1}'))
+            output_file = open(self.__target_path, 'a+', encoding="utf-16le")
+            output_file.write(source_text.replace('0}', '1}'))
+            output_file.close()
             self.__cur_line += 1
             return [source_text]
         # 奇数行是原文文本
@@ -84,7 +87,9 @@ class BishopTranslator(QThread):
         res = self.__general_text_processor.RecoverTransText(res)
         # 复原特殊处理
         res = self.__special_text_processor.RecoverTransSpecialText(source_text, res)
-        self.__output_file.write(res + '\n')
+        output_file = open(self.__target_path, 'a+', encoding="utf-16le")
+        output_file.write(res + '\n')
+        output_file.close()
         return res
 
     def run(self):
