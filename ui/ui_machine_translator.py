@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_machine_trans.ui'
+# Form implementation generated from reading ui file 'ui_machine_translator.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_word_count.ui'
+# Form implementation generated from reading ui file 'ui_word_counter.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
