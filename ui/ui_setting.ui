@@ -83,13 +83,13 @@
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="txAPIWidget" native="true">
+      <widget class="QWidget" name="tencentApiWidget" native="true">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QWidget" name="txAPILabel" native="true">
+         <widget class="QWidget" name="tencentApiLabel" native="true">
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
-            <widget class="QLabel" name="txAPIIDLabel">
+            <widget class="QLabel" name="tencentApiIdLabel">
              <property name="text">
               <string>API ID</string>
              </property>
@@ -99,7 +99,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="txAPIKeyLabel">
+            <widget class="QLabel" name="tencentApiKeyLabel">
              <property name="text">
               <string>API Key</string>
              </property>
@@ -112,10 +112,10 @@
          </widget>
         </item>
         <item>
-         <widget class="QWidget" name="txAPIEdit" native="true">
+         <widget class="QWidget" name="tencentApiEdit" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QLineEdit" name="txAPIIDEdit">
+            <widget class="QLineEdit" name="tencentApiIdEdit">
              <property name="minimumSize">
               <size>
                <width>200</width>
@@ -131,7 +131,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="txAPIKeyEdit">
+            <widget class="QLineEdit" name="tencentApiKeyEdit">
              <property name="minimumSize">
               <size>
                <width>200</width>
