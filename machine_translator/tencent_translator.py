@@ -6,23 +6,20 @@ import json
 
 
 class TencentMachineTranslator:
-    client = 0
-    req = 0
-
-    def SetIdAndKey(self, api_id, api_key):
+    def __init__(self, api_id, api_key):
         cred = credential.Credential(api_id, api_key)
         httpProfile = HttpProfile()
         httpProfile.endpoint = "tmt.tencentcloudapi.com"
         clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
-        self.client = tmt_client.TmtClient(cred, "ap-shanghai", clientProfile)
-        self.req = models.TextTranslateRequest()
+        self.__client = tmt_client.TmtClient(cred, "ap-shanghai", clientProfile)
+        self.__req = models.TextTranslateRequest()
 
     def Translate(self, source_text):
         params = '{\"SourceText\":\"' + source_text + '\",\"Source\":\"ja\",\"Target\":\"zh\",\"ProjectId\":0}'
-        self.req.from_json_string(params)
+        self.__req.from_json_string(params)
         try:
-            resp = self.client.TextTranslate(self.req)
+            resp = self.__client.TextTranslate(self.__req)
             dic = json.loads(resp.to_json_string())
             return dic["TargetText"]
         except Exception:
