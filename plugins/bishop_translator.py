@@ -28,7 +28,7 @@ class BishopTranslator(QThread):
         if len(src_text_path) <= 4 or src_text_path[len(src_text_path) - 4:len(src_text_path)] != ".txt":
             self.print_signal.emit("原文文件路径错误")
             return
-        self.__general_machine_translator.SetApiIdAndKey(api_id, api_key)
+        self.__general_machine_translator.SetTencentTranslator(api_id, api_key)
         self.__word_dic_path = word_dic_path
         self.__src_text_path = src_text_path
 

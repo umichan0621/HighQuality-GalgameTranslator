@@ -1,5 +1,4 @@
 import sys
-import time
 from PyQt5.Qt import QApplication, QWidget
 from ui_function.menu import Menu
 from ui_function.setting import Setting
@@ -7,6 +6,7 @@ from ui_function.machine_translator import MachineTrans
 from ui_function.word_counter import WordCount
 from plugins.bishop_translator import BishopTranslator
 from plugins.bishop_counter import BishopCounter
+from plugins.test_translator import TestTranslator, TranslatorApi
 
 
 class MainWindow:
@@ -16,6 +16,7 @@ class MainWindow:
         app = QApplication(sys.argv)
         self.__bishop_counter = BishopCounter()
         self.__bishop_translator = BishopTranslator()
+        self.__test_translator = TestTranslator()
         self.__main_window = QWidget()
         self.__static = -1
         self.__menu = Menu(self.__main_window)  # 初始化菜单栏
@@ -27,9 +28,10 @@ class MainWindow:
         self.__menu.GetMenuWidget().machineTranslateButton.clicked.connect(self.__ChangeToMachineTrans)
         self.__menu.GetMenuWidget().wordCountButton.clicked.connect(self.__ChangeToWordCount)
         # 设置机器翻译开始翻译按钮的信号和槽
-        self.__machine_trans.GetStartTransButton().clicked.connect(self.CallPluginBishopTrans)
+        self.__machine_trans.GetStartTranslateButton().clicked.connect(self.CallPluginBishopTrans)
         # 设置词频统计开始统计按钮的信号和槽
         self.__word_count.GetStartCountButton().clicked.connect(self.CallPluginBishopCount)
+        self.__setting.GetTestTranslateButton().clicked.connect(self.CallPluginTestTranslator)
         # 0表示MachineTrans窗体，1表示WordCount窗体，2表示Setting窗体
         self.__ChangeToMachineTrans()
         self.__main_window.setWindowTitle("HighQuality-GalgameTranslator")
@@ -91,3 +93,18 @@ class MainWindow:
         self.__bishop_counter.print_signal.connect(self.__word_count.Print)
         self.__bishop_counter.Init(word_dic_path, src_text_path)
         self.__bishop_counter.start()
+
+    def CallPluginTestTranslator(self):
+        self.__test_translator.print_signal.connect(self.__setting.Print)
+        # 读取翻译API的ID和Key
+        tencent_api_id = self.__setting.GetTencentApiId()
+        tencent_api_key = self.__setting.GetTencentApiKey()
+        self.__test_translator.SetTencentTranslator(tencent_api_id, tencent_api_key)
+        # 读取翻译测试文本
+        test_text = self.__setting.GetTestText()
+        translate_api = self.__setting.GetSelectedTranslateApi()
+
+        self.__test_translator.SetTranslateContent(test_text, translate_api)
+        self.__test_translator.start()
+
+

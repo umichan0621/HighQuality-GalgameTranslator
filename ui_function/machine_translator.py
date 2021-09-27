@@ -15,7 +15,7 @@ class MachineTrans(QWidget):
         self.__font.setPointSize(16)
         self.Hide()
 
-    def GetStartTransButton(self):
+    def GetStartTranslateButton(self):
         return self.__ui_machine_trans.startTransButton
 
     def Print(self, text):

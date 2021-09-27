@@ -38,25 +38,12 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>100</y>
+      <y>240</y>
       <width>351</width>
       <height>210</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
      <item>
       <widget class="QLabel" name="label">
        <property name="minimumSize">
@@ -201,31 +188,31 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>5</y>
-      <width>860</width>
-      <height>60</height>
+      <x>0</x>
+      <y>8</y>
+      <width>960</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>860</width>
-      <height>60</height>
+      <width>960</width>
+      <height>100</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>860</width>
-      <height>60</height>
+      <width>960</width>
+      <height>100</height>
      </size>
     </property>
     <widget class="QWidget" name="wordsDicWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>35</x>
        <y>0</y>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -237,143 +224,222 @@
      <property name="minimumSize">
       <size>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </size>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_6">
-      <item>
-       <widget class="QLineEdit" name="wordsDicEdit">
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>300</width>
-          <height>25</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="openWordsDicButton">
-        <property name="minimumSize">
-         <size>
-          <width>90</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>90</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>打开词表</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLineEdit" name="wordsDicEdit">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>25</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="openWordsDicButton">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>0</y>
+        <width>90</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>打开词表</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="openSrcFileWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>440</x>
-       <y>0</y>
+       <x>35</x>
+       <y>45</y>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </rect>
      </property>
      <property name="minimumSize">
       <size>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>420</width>
-       <height>50</height>
+       <height>30</height>
       </size>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QLineEdit" name="srcFilePathEdit">
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>300</width>
-          <height>25</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="openSrcFileButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>90</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>90</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>打开原文文件</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLineEdit" name="srcFilePathEdit">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>25</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="openSrcFileButton">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>0</y>
+        <width>90</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>90</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>打开原文文件</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="openOnlineDicButton">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>0</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>90</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>90</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>打开在线词表</string>
+     </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="openOnlineDicButton">
+   <widget class="QWidget" name="testTranslateWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>70</y>
-      <width>90</width>
-      <height>25</height>
+      <x>0</x>
+      <y>120</y>
+      <width>960</width>
+      <height>100</height>
      </rect>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>90</width>
-      <height>25</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>90</width>
-      <height>25</height>
-     </size>
-    </property>
-    <property name="text">
-     <string>打开在线词表</string>
-    </property>
+    <widget class="QTextEdit" name="testTranslateEdit">
+     <property name="geometry">
+      <rect>
+       <x>35</x>
+       <y>10</y>
+       <width>365</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="acceptRichText">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="testTranslateBrowser">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>10</y>
+       <width>365</width>
+       <height>80</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="testTranslateButton">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>65</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>翻译</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="selectTranslatorComboBox">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>10</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
