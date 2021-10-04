@@ -13,10 +13,10 @@
   - 针对Bishop游戏的机器翻译√
   - 针对Bishop游戏的词频统计√
   - 腾讯翻译API√
+  - Google翻译API√
 - 待完成
   - 针对Kaguya游戏的机器翻译
   - 针对Kaguya游戏的词频统计
-  - Google翻译API
   - 人工翻译校对工具
 
 ## 依赖库
@@ -38,13 +38,14 @@ py -m pip install -r requirements.txt
 - 协助开发Python翻译脚本
 - 使用内置的词频统计工具count_word_frequency.py统计未收录的通用高频词
     - 只会将第二列不为空，即有中文翻译的词加入字典
-    - 对于机器翻译完全正确的词语请放在excel的[过滤]页下
+    - 对于机器翻译完全正确的词语请放在excel的[过滤词表]页下
 - 统计某部作品的专有词
-    - 对于某部作品的专有词请放在excel的[特殊]页下
+    - 对于某部作品的专有词请放在excel的[特殊词表]页下
 - 协助完成字典内收录词语的翻译
 
 ## 协助完善词表
 - 请确保可以使用Google
 - [Google在线文档](https://docs.google.com/spreadsheets/d/1anIXXcQiWM1ke6veDIBHw4kmheULIdy7tGXPLjScIcU/edit#gid=1495071713)
-- 需要协助开发可以申请修改权限，但不要随意胡乱修改文档
+- 需要协助开发可以申请修改权限
+- 仅下载不对词表进行修改不要申请权限
 - [在线聊天室](https://gitter.im/HighQuality-GalgameTranslator/community)，开发和使用相关问题讨论
