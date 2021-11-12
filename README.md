@@ -14,6 +14,9 @@
 - 在【机器翻译】点击【开始翻译】，会自动逐行翻译
 - 利用Tiny翻译肋手将翻译之后的文本导入游戏文件
 
+## 已完成机器翻译（Google盘）
+- [Bishop](https://drive.google.com/drive/folders/1-uB9eZwQNtKJodMaJKRl8SuPeS1pCFfG?usp=sharing)
+
 ## 具体功能
 - 已完成
   - 针对Bishop游戏的机器翻译√
