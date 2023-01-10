@@ -1,7 +1,0 @@
-PyQt5
-PyQt5-tools
-xlrd
-mecab-python3
-tencentcloud-sdk-python
-pygoogletranslation
-googletrans==4.0.0-rc1
