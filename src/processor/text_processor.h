@@ -3,6 +3,8 @@
 #include <vector>
 #include <functional>
 
+#include "name_process.h"
+
 namespace gal {
 namespace processor {
 
@@ -21,6 +23,10 @@ public:
     void InsertWord(const std::string& word, const std::string& translation);
 
     void InsertWord(const std::string& word, const std::string& translation, str_func random_str);
+
+    void InsertName(GalName gal_name);
+
+    void InsertName(GalName gal_name, str_func random_str);
 
 private:
     const std::vector<std::string>& word_list();
