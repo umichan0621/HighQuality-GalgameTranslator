@@ -10,6 +10,7 @@ set(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 include_directories(
     ${SOURCE_DIR}
     ${THIRD_PARTY_DIR}/GoInterface/include/
+    ${THIRD_PARTY_DIR}/yaml-cpp/include/
 )
 
 file(GLOB GAL_SRC
@@ -26,6 +27,7 @@ elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     message(STATUS "Windows Compiling...")
     file(GLOB GAL_LIB
         ${THIRD_PARTY_DIR}/GoInterface/lib/libGoInterface.dll
+        ${THIRD_PARTY_DIR}/yaml-cpp/libyaml-cpp.dll
 )
 else()
     message(ERROR "Unknown Platform...")
