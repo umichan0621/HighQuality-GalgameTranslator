@@ -75,6 +75,68 @@ void TextProcessor::InsertWord(const std::string& word, const std::string& trans
     need_sort_ = true;
 }
 
+void TextProcessor::InsertName(GalName gal_name) {
+    const auto& first_name = gal_name.first_name;
+    const auto& first_name_translation = gal_name.first_name_translation;
+    const auto& last_name = gal_name.last_name;
+    const auto& last_name_translation = gal_name.last_name_translation;
+    InsertWord(first_name, first_name_translation);
+    InsertWord(last_name, last_name_translation);
+    for (auto& process : gal_name.process_vec) {
+        // Process name and get the word
+        std::string word, translation;
+        if (process.is_first_name) {
+            word = first_name;
+            translation = first_name_translation;
+        } else {
+            word = last_name;
+            translation = last_name_translation;
+        }
+        if (process.is_tail) {
+            word = word + process.word;
+        } else {
+            word = process.word + word;
+        }
+        if (process.is_translation_tail) {
+            translation = translation + process.translation;
+        } else {
+            translation = process.translation + translation;
+        }
+        InsertWord(word, translation);
+    }
+}
+
+void TextProcessor::InsertName(GalName gal_name, str_func random_str) {
+    const auto& first_name = gal_name.first_name;
+    const auto& first_name_translation = gal_name.first_name_translation;
+    const auto& last_name = gal_name.last_name;
+    const auto& last_name_translation = gal_name.last_name_translation;
+    InsertWord(first_name, first_name_translation, random_str);
+    InsertWord(last_name, last_name_translation, random_str);
+    for (auto& process : gal_name.process_vec) {
+        // Process name and get the word
+        std::string word, translation;
+        if (process.is_first_name) {
+            word = first_name;
+            translation = first_name_translation;
+        } else {
+            word = last_name;
+            translation = last_name_translation;
+        }
+        if (process.is_tail) {
+            word = word + process.word;
+        } else {
+            word = process.word + word;
+        }
+        if (process.is_translation_tail) {
+            translation = translation + process.translation;
+        } else {
+            translation = process.translation + translation;
+        }
+        InsertWord(word, translation, random_str);
+    }
+}
+
 const std::vector<std::string>& TextProcessor::word_list() {
     if (!need_sort_) {
         return word_list_;
