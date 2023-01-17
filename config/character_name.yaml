@@ -5,9 +5,9 @@ character_name_list:
     last_name:
     last_name_translation:
     process:
-      - is_first_name: true
-        is_tail: true
-        is_translation_tail: true
+      - is_first_name:
+        is_tail:
+        is_translation_tail:
         word:
         translation:
   #----------------Character 2----------------#
@@ -16,8 +16,8 @@ character_name_list:
     last_name:
     last_name_translation:
     process:
-      - is_first_name: true
-        is_tail: true
-        is_translation_tail: true
+      - is_first_name:
+        is_tail:
+        is_translation_tail:
         word:
         translation:
