@@ -5,6 +5,13 @@ character_name_list:
     last_name:
     last_name_translation:
     process:
+      #---------------Process 1---------------#
+      - is_first_name:
+        is_tail:
+        is_translation_tail:
+        word:
+        translation:
+      #---------------Process 2---------------#
       - is_first_name:
         is_tail:
         is_translation_tail:
