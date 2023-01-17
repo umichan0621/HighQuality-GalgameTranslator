@@ -1,0 +1,25 @@
+character_name_list:
+  #----------------Character 1----------------#
+  - first_name: P # 名
+    first_name_translation: p # 名的翻译
+    last_name: Q # 姓
+    last_name_translation: q # 姓的翻译
+    process: # 对人名的处理，以处理の为例
+      - is_first_name: true # 对姓处理
+        is_tail: true # 处理的词在前
+        is_translation_tail: true #处理的词翻译后在前
+        word: の
+        translation: 的
+      # 上述处理可得 Pの->p的
+  #----------------Character 2----------------#
+  - first_name: A
+    first_name_translation: a
+    last_name: S
+    last_name_translation: s
+    process: # 对人名的处理，以处理ちゃん为例
+      - is_first_name: true
+        is_tail: true
+        is_translation_tail: false #处理的词翻译后在后
+        word: ちゃん
+        translation: 小
+      # 上述处理可得 Aちゃん->小a
