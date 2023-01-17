@@ -1,0 +1,23 @@
+character_name_list:
+  #----------------Character 1----------------#
+  - first_name:
+    first_name_translation:
+    last_name:
+    last_name_translation:
+    process:
+      - is_first_name: true
+        is_tail: true
+        is_translation_tail: true
+        word:
+        translation:
+  #----------------Character 2----------------#
+  - first_name:
+    first_name_translation:
+    last_name:
+    last_name_translation:
+    process:
+      - is_first_name: true
+        is_tail: true
+        is_translation_tail: true
+        word:
+        translation:
