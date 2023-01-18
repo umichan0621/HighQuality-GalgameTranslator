@@ -5,5 +5,5 @@ text_analyzer:
       "[\\\\n…「」]+", #
       "\\{\"Address.*\\}",
     ]
-  separator: []
-  separator_need_translate: []
+  separator: ["\\B", "\\A"]
+  separator_need_translate: [["「", "“"], ["」", "”"]]
