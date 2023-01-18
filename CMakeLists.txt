@@ -4,7 +4,6 @@ project(test)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-set(BUILD_LOG "build_log.txt")
 #------------------build submodule------------------#
  
 #----------------build TransInterface---------------#
@@ -13,7 +12,7 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
         execute_process(COMMAND bash build.sh
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/TransInterface/)
     else()
-        message(FATAL_ERROR "Can not find third_party/TransInterface")
+        message(FATAL_ERROR "Can not find third_party/TransInterface, try git submodule update --init")
     endif()
 elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
 
@@ -59,4 +58,5 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     ${GAL_LIB}
+    yaml-cpp
 )
