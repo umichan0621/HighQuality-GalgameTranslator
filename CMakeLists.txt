@@ -5,21 +5,10 @@ project(test)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 #------------------build submodule------------------#
- 
-#----------------build TransInterface---------------#
-if(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
-    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/TransInterface/build.sh)
-        execute_process(COMMAND bash build.sh
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/TransInterface/)
-    else()
-        message(FATAL_ERROR "Can not find third_party/TransInterface, try git submodule update --init")
-    endif()
-elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
+add_subdirectory(third_party/TransInterface)
+set(YAML_BUILD_SHARED_LIBS on)
+add_subdirectory(third_party/yaml-cpp)
 
-else()
-    message(FATAL_ERROR "Unknown Platform...")
-endif() 
-#----------------build TransInterface---------------#
 
 #------------------build submodule------------------#
 
