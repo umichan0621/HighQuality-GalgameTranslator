@@ -21,9 +21,7 @@ public:
 
     void AddRegex(const std::string& regex_str);
 
-    void AddSeparator(const std::string& separator);
-
-    void AddSeparatorNeedTranslate(const std::string& separator_need_translate, const std::string& translation);
+    void AddSeparator(const std::string& separator, const std::string& translation = "");
 
     std::vector<AnalyzerRes> Analyze(const std::string& text);
 
