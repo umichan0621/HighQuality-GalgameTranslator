@@ -1,3 +1,4 @@
+#pragma once
 #include <regex>
 #include <vector>
 #include <unordered_set>
