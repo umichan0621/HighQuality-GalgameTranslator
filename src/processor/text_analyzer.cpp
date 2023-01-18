@@ -19,11 +19,8 @@ void TextAnalyzer::AddUnnecessaryNewlineCharacter(const std::string& unnecessary
 
 void TextAnalyzer::AddRegex(const std::string& regex_str) { regex_vec_.insert(regex_str); }
 
-void TextAnalyzer::AddSeparator(const std::string& separator) { separator_.insert({separator, ""}); }
-
-void TextAnalyzer::AddSeparatorNeedTranslate(
-    const std::string& separator_need_translate, const std::string& translation) {
-    separator_[separator_need_translate] = translation;
+void TextAnalyzer::AddSeparator(const std::string& separator, const std::string& translation) {
+    separator_[separator] = translation;
 }
 
 std::vector<AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
