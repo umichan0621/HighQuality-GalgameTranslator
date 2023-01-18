@@ -1,0 +1,9 @@
+text_analyzer:
+  newline_character: "\\n"
+  unnecessary_newline_character: ["、\\n"]
+  regular_expression: [
+      "[\\\\n…「」]+", #
+      "\\{\"Address.*\\}",
+    ]
+  separator: []
+  separator_need_translate: []
