@@ -15,24 +15,7 @@ void GalTranslator::LoadConfig(const std::string& config_path) {
     LoadTextAnalyzer(config_path + "/text_analyzer.yaml");
 }
 
-void GalTranslator::Translate() {
-    std::string str =
-        "\\B「親父の出張終了日は再来月の祝日……\\n\\Aそれまでにも余裕を見つけることができれば、\\n家に顔を出すかもし"
-        "れな"
-        "い"
-        "、か……」";
-    LoadConfig("/home/autowise/HighQuality-GalgameTranslator/config");
-    // text_analyzer_
-    // ana.AddSeparator("\\B");
-    // ana.AddSeparator("\\A");
-    // ana.AddUnnecessaryNewlineCharacter("、\\n");
-    // ana.AddSeparator("「", "“");
-    // ana.AddSeparator("」", "”");
-    auto z = text_analyzer_.Analyze(str);
-    for (auto x : z) {
-        std::cout << x.need_tranlate << " " << x.text << std::endl;
-    }
-}
+void GalTranslator::Translate() {}
 
 void GalTranslator::LoadTextAnalyzer(const std::string& config_path) {
     // Load text analyzer
