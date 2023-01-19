@@ -20,6 +20,8 @@ public:
 private:
     void LoadTextAnalyzer(const std::string& config_path);
 
+    void LoadCharacterName(const std::string& config_path);
+
 private:
     std::string src_text_path_;
     std::vector<std::string> src_text_vec_;
