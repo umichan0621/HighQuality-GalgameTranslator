@@ -64,9 +64,13 @@ void TextAnalyzer::SplitTextByNewlineCharacter(
             return;
         }
     }
+    // separator at end of text
     for (const auto& separator : separator_) {
-        std::string regex = ".*" + separator.first;
-        if (std::regex_match(pre_res.text, std::regex(regex))) {
+        int pos = pre_res.text.find(separator.first);
+        if (pos < 0) {
+            continue;
+        }
+        if (pos + separator.first.size() == pre_res.text.size()) {
             analyzer_res->push_back({false, sub_text});
             return;
         }
