@@ -29,8 +29,10 @@ std::vector<AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
         }
     }
     // split text by newline character
-    SplitTextByNewlineCharacter(&analyzer_res, text);
-
+    std::vector<std::string> split_res = utils::Split(text, newline_character_, true);
+    for (const std::string& sub_text : split_res) {
+        SplitTextByNewlineCharacter(&analyzer_res, sub_text);
+    }
     // split text recursively
     for (const auto& separator : separator_) {
         SplitText(&analyzer_res, separator.first, separator.second);
@@ -38,37 +40,34 @@ std::vector<AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
     return analyzer_res;
 }
 
-void TextAnalyzer::SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyzer_res, const std::string& text) {
-    std::vector<std::string> split_res = utils::Split(text, newline_character_, true);
-    for (const auto& sub_text : split_res) {
-        // text
-        if (sub_text != newline_character_) {
-            // merge two text that need to be translated
-            if (analyzer_res->size() > 0 && analyzer_res->back().need_tranlate) {
-                analyzer_res->back().text += sub_text;
-            } else {
-                analyzer_res->push_back({true, sub_text});
-            }
-            continue;
+void TextAnalyzer::SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyzer_res, const std::string& sub_text) {
+    // text
+    if (sub_text != newline_character_) {
+        // merge two text that need to be translated
+        if (analyzer_res->size() > 0 && analyzer_res->back().need_tranlate) {
+            analyzer_res->back().text += sub_text;
+        } else {
+            analyzer_res->push_back({true, sub_text});
         }
-        // newline character
-        if (analyzer_res->empty()) {
+        return;
+    }
+    // newline character
+    if (analyzer_res->empty()) {
+        analyzer_res->push_back({false, sub_text});
+        return;
+    }
+    auto& pre_res = analyzer_res->back();
+    for (const auto& regex : newline_character_trigger_) {
+        if (std::regex_match(pre_res.text, std::regex(regex))) {
             analyzer_res->push_back({false, sub_text});
-            continue;
+            return;
         }
-        auto& pre_res = analyzer_res->back();
-        for (const auto& regex : newline_character_trigger_) {
-            if (std::regex_match(pre_res.text, std::regex(regex))) {
-                analyzer_res->push_back({false, sub_text});
-                break;
-            }
-        }
-        for (const auto& separator : separator_) {
-            std::string regex = ".*" + separator.first;
-            if (std::regex_match(pre_res.text, std::regex(regex))) {
-                analyzer_res->push_back({false, sub_text});
-                break;
-            }
+    }
+    for (const auto& separator : separator_) {
+        std::string regex = ".*" + separator.first;
+        if (std::regex_match(pre_res.text, std::regex(regex))) {
+            analyzer_res->push_back({false, sub_text});
+            return;
         }
     }
 }
