@@ -1,6 +1,10 @@
 #pragma once
 
+#include <chrono>
+#include <vector>
 #include <unordered_map>
+
+#include <utils/analyzer_res.h>
 
 #include "trans_interface.h"
 
@@ -17,8 +21,11 @@ public:
 
     std::string Translate(const std::string& src_text);
 
+    std::string Translate(const std::vector<utils::AnalyzerRes>& analyzer_res);
+
 private:
-    int32_t trans_freq_;
+    std::chrono::high_resolution_clock::time_point last_translate_time_;
+    std::chrono::milliseconds sleep_time_;
     TransInterface* cur_translator_;
     std::unordered_map<std::string, TransInterface*> translator_map_;
 };
