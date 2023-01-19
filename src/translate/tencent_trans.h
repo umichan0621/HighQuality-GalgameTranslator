@@ -1,10 +1,10 @@
 #pragma once
-#include <string>
+#include "trans_interface.h"
 
 namespace gal {
 namespace trans {
 
-class TencentTrans {
+class TencentTrans : public TransInterface {
 public:
     TencentTrans();
 
@@ -20,7 +20,7 @@ public:
         src_language_ = src_language;
     }
 
-    std::string Translate(const std::string& src_text);
+    std::string Translate(const std::string& src_text) override;
 
 private:
     std::string secret_id_;
