@@ -24,6 +24,7 @@ include_directories(
     )
 
 file(GLOB GAL_SRC
+    ${SOURCE_DIR}/translate/machine_translator.cpp
     ${SOURCE_DIR}/translate/tencent_trans.cpp
     ${SOURCE_DIR}/processor/text_processor.cpp
     ${SOURCE_DIR}/processor/text_analyzer.cpp
