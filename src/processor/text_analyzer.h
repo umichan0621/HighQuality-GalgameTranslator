@@ -4,13 +4,10 @@
 #include <unordered_set>
 #include <unordered_map>
 
+#include <utils/analyzer_res.h>
+
 namespace gal {
 namespace processor {
-
-struct AnalyzerRes {
-    bool need_tranlate;
-    std::string text;
-};
 
 class TextAnalyzer {
 public:
@@ -24,14 +21,15 @@ public:
 
     void AddSeparator(const std::string& separator, const std::string& translation = "");
 
-    std::vector<AnalyzerRes> Analyze(const std::string& text);
+    std::vector<utils::AnalyzerRes> Analyze(const std::string& text);
 
 private:
     bool NeedTranslate(std::string* text);
 
-    void SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyzer_res, const std::string& sub_text);
+    void SplitTextByNewlineCharacter(std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text);
 
-    void SplitText(std::vector<AnalyzerRes>* text_vec, const std::string& separator, const std::string& translation);
+    void SplitText(
+        std::vector<utils::AnalyzerRes>* text_vec, const std::string& separator, const std::string& translation);
 
 private:
     std::string newline_character_;

@@ -19,8 +19,8 @@ void TextAnalyzer::AddSeparator(const std::string& separator, const std::string&
     separator_[separator] = translation;
 }
 
-std::vector<AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
-    std::vector<AnalyzerRes> analyzer_res;
+std::vector<utils::AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
+    std::vector<utils::AnalyzerRes> analyzer_res;
     // full text match
     for (const auto& regex : regex_vec_) {
         if (std::regex_match(text, std::regex(regex))) {
@@ -40,7 +40,8 @@ std::vector<AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
     return analyzer_res;
 }
 
-void TextAnalyzer::SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyzer_res, const std::string& sub_text) {
+void TextAnalyzer::SplitTextByNewlineCharacter(
+    std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text) {
     // text
     if (sub_text != newline_character_) {
         // merge two text that need to be translated
@@ -73,8 +74,8 @@ void TextAnalyzer::SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyze
 }
 
 void TextAnalyzer::SplitText(
-    std::vector<AnalyzerRes>* analyzer_res, const std::string& separator, const std::string& translation) {
-    std::vector<AnalyzerRes> temp;
+    std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& separator, const std::string& translation) {
+    std::vector<utils::AnalyzerRes> temp;
     for (auto& sub_res : *analyzer_res) {
         // no need for tranlation
         if (!sub_res.need_tranlate || !NeedTranslate(&sub_res.text)) {
