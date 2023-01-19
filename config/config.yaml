@@ -1,0 +1,5 @@
+machine_translator:
+  - translator: "tencent"
+    secret_id:
+    secret_key:
+    trans_freq: 4.5
