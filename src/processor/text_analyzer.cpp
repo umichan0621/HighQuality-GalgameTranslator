@@ -57,8 +57,14 @@ void TextAnalyzer::SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyze
             continue;
         }
         auto& pre_res = analyzer_res->back();
-        // bool is_newline_character_triggered = false;
-        for (auto& regex : newline_character_trigger_) {
+        for (const auto& regex : newline_character_trigger_) {
+            if (std::regex_match(pre_res.text, std::regex(regex))) {
+                analyzer_res->push_back({false, sub_text});
+                break;
+            }
+        }
+        for (const auto& separator : separator_) {
+            std::string regex = ".*" + separator.first;
             if (std::regex_match(pre_res.text, std::regex(regex))) {
                 analyzer_res->push_back({false, sub_text});
                 break;
