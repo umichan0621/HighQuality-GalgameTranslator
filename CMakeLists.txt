@@ -6,10 +6,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 #------------------build submodule------------------#
 add_subdirectory(third_party/TransInterface)
-set(YAML_BUILD_SHARED_LIBS on)
-add_subdirectory(third_party/yaml-cpp)
 
-
+if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
+    set(YAML_BUILD_SHARED_LIBS on)
+    add_subdirectory(third_party/yaml-cpp)
+endif() 
 #------------------build submodule------------------#
 
 
