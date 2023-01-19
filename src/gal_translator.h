@@ -3,7 +3,7 @@
 #include <vector>
 #include <processor/text_analyzer.h>
 #include <processor/text_processor.h>
-#include <translate/tencent_trans.h>
+#include <translate/machine_translator.h>
 
 namespace gal {
 
@@ -24,11 +24,12 @@ private:
 
 private:
     std::string src_text_path_;
-    std::vector<std::string> src_text_vec_;
+    std::string des_text_path_;
 
+    std::vector<std::string> src_text_vec_;
     processor::TextAnalyzer text_analyzer_;
     processor::TextProcessor text_processor_;
-    trans::TencentTrans translator_;
+    trans::MachineTranslator translator_;
 };
 
 }  // namespace gal
