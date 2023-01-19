@@ -25,9 +25,9 @@ public:
 
     void InsertWord(const std::string& word, const std::string& translation, str_func random_str);
 
-    void InsertName(GalName gal_name);
+    void InsertCharacter(const GalCharacter& gal_haracter);
 
-    void InsertName(GalName gal_name, str_func random_str);
+    void InsertCharacter(const GalCharacter& gal_haracter, str_func random_str);
 
 private:
     const std::vector<std::string>& word_list();

@@ -1,9 +1,8 @@
+#include <gal_translator.h>
 
-#include <iostream>
-
-#include <translate/tencent_trans.h>
-// #include <utils/utf8.hpp>
-
-using namespace std;
-
-int main() { gal::trans::TencentTrans trans; }
+int main() {
+    gal::GalTranslator gal_translator;
+    gal_translator.LoadConfig("/home/autowise/HighQuality-GalgameTranslator/config/");
+    gal_translator.SetFile("/home/autowise/HighQuality-GalgameTranslator/q.txt");
+    gal_translator.Translate();
+}

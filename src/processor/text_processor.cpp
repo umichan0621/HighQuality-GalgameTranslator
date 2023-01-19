@@ -75,14 +75,14 @@ void TextProcessor::InsertWord(const std::string& word, const std::string& trans
     need_sort_ = true;
 }
 
-void TextProcessor::InsertName(GalName gal_name) {
-    const auto& first_name = gal_name.first_name;
-    const auto& first_name_translation = gal_name.first_name_translation;
-    const auto& last_name = gal_name.last_name;
-    const auto& last_name_translation = gal_name.last_name_translation;
+void TextProcessor::InsertCharacter(const GalCharacter& gal_character) {
+    const auto& first_name = gal_character.first_name;
+    const auto& first_name_translation = gal_character.first_name_translation;
+    const auto& last_name = gal_character.last_name;
+    const auto& last_name_translation = gal_character.last_name_translation;
     InsertWord(first_name, first_name_translation);
     InsertWord(last_name, last_name_translation);
-    for (auto& process : gal_name.process_vec) {
+    for (auto& process : gal_character.process_vec) {
         // Process name and get the word
         std::string word, translation;
         if (process.is_first_name) {
@@ -106,14 +106,14 @@ void TextProcessor::InsertName(GalName gal_name) {
     }
 }
 
-void TextProcessor::InsertName(GalName gal_name, str_func random_str) {
-    const auto& first_name = gal_name.first_name;
-    const auto& first_name_translation = gal_name.first_name_translation;
-    const auto& last_name = gal_name.last_name;
-    const auto& last_name_translation = gal_name.last_name_translation;
+void TextProcessor::InsertCharacter(const GalCharacter& gal_character, str_func random_str) {
+    const auto& first_name = gal_character.first_name;
+    const auto& first_name_translation = gal_character.first_name_translation;
+    const auto& last_name = gal_character.last_name;
+    const auto& last_name_translation = gal_character.last_name_translation;
     InsertWord(first_name, first_name_translation, random_str);
     InsertWord(last_name, last_name_translation, random_str);
-    for (auto& process : gal_name.process_vec) {
+    for (auto& process : gal_character.process_vec) {
         // Process name and get the word
         std::string word, translation;
         if (process.is_first_name) {

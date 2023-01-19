@@ -13,7 +13,7 @@ struct NameProcess {
     std::string translation;
 };
 
-struct GalName {
+struct GalCharacter {
     std::string first_name;
     std::string first_name_translation;
     std::string last_name;
