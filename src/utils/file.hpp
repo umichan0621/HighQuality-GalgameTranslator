@@ -11,6 +11,21 @@ static bool FileExists(const std::string& path) {
     return ifs.good();
 }
 
+static int32_t FileLineCount(const std::string& path) {
+    std::fstream fs;
+    fs.open(path, std::ios::in);
+    if (!fs.is_open()) {
+        return false;
+    }
+    int32_t count = 0;
+    std::string temp;
+    while (getline(fs, temp)) {
+        ++count;
+    }
+    fs.close();
+    return count;
+}
+
 static bool ReadFile(const std::string& path, std::vector<std::string>* content) {
     std::fstream fs;
     fs.open(path, std::ios::in);
