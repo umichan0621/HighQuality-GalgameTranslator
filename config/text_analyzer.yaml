@@ -1,8 +1,8 @@
 text_analyzer:
   newline_character: "\\n"
-  unnecessary_newline_character: ["、\\n"]
+  newline_character_trigger: [".*[。…！？]+"]
   regular_expression: [
-      "[\\\\n…「」]+", #
+      "[\\\\n…]+", # \\\\->\
       "\\{\"Address.*\\}",
     ]
   separator: ["\\B", "\\A"]
