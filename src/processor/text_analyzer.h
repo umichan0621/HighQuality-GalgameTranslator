@@ -21,7 +21,7 @@ public:
 
     void AddSeparator(const std::string& separator, const std::string& translation = "");
 
-    std::vector<utils::AnalyzerRes> Analyze(const std::string& text);
+    std::vector<utils::AnalyzerRes> Analyze(std::string text);
 
 private:
     bool NeedTranslate(std::string* text);

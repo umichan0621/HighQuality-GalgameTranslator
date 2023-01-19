@@ -19,7 +19,8 @@ void TextAnalyzer::AddSeparator(const std::string& separator, const std::string&
     separator_[separator] = translation;
 }
 
-std::vector<utils::AnalyzerRes> TextAnalyzer::Analyze(const std::string& text) {
+std::vector<utils::AnalyzerRes> TextAnalyzer::Analyze(std::string text) {
+    utils::Replace(&text, "、" + newline_character_, "、");
     std::vector<utils::AnalyzerRes> analyzer_res;
     // full text match
     for (const auto& regex : regex_vec_) {
