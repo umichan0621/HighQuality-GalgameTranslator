@@ -18,7 +18,7 @@ public:
 
     void SetNewlineCharacter(const std::string& newline_character);
 
-    void AddUnnecessaryNewlineCharacter(const std::string& unnecessary_newline_character);
+    void AddNewlineCharacterTrigger(const std::string& newline_character_trigger);
 
     void AddRegex(const std::string& regex_str);
 
@@ -28,11 +28,14 @@ public:
 
 private:
     bool NeedTranslate(std::string* text);
-    // std::vector<std::string>
+
+    void SplitTextByNewlineCharacter(std::vector<AnalyzerRes>* analyzer_res, const std::string& text);
+
+    void SplitText(std::vector<AnalyzerRes>* text_vec, const std::string& separator, const std::string& translation);
 
 private:
     std::string newline_character_;
-    std::unordered_set<std::string> unnecessary_newline_character_;
+    std::unordered_set<std::string> newline_character_trigger_;
     std::unordered_set<std::string> regex_vec_;
     std::unordered_map<std::string, std::string> separator_;
 };
