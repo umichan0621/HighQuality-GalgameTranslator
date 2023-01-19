@@ -111,6 +111,22 @@ void GalTranslator::LoadTextAnalyzer(const std::string& config_path) {
 
 void GalTranslator::LoadCharacterName(const std::string& config_path) {
     YAML::Node character_name_list = YAML::LoadFile(config_path);
+    YAML::Node common_process = character_name_list["common_process"];
+    if (!common_process.IsSequence()) {
+        std::cout << "Fail to load common_process" << std::endl;
+    }
+    std::vector<processor::NameProcess> common_name_process;
+    for (int i = 0; i < common_process.size(); ++i) {
+        YAML::Node process = common_process[i];
+        processor::NameProcess name_process;
+        name_process.is_first_name = process["is_first_name"].as<bool>();
+        name_process.is_tail = process["is_tail"].as<bool>();
+        name_process.is_translation_tail = process["is_translation_tail"].as<bool>();
+        name_process.word = process["word"].as<std::string>();
+        name_process.translation = process["translation"].as<std::string>();
+        common_name_process.emplace_back(name_process);
+    }
+
     character_name_list = character_name_list["character_name_list"];
     if (!character_name_list.IsSequence()) {
         std::cout << "Fail to load character_name_list" << std::endl;
@@ -131,6 +147,9 @@ void GalTranslator::LoadCharacterName(const std::string& config_path) {
             name_process.is_translation_tail = process["is_translation_tail"].as<bool>();
             name_process.word = process["word"].as<std::string>();
             name_process.translation = process["translation"].as<std::string>();
+            gal_character.process_vec.emplace_back(name_process);
+        }
+        for (const auto& name_process : common_name_process) {
             gal_character.process_vec.emplace_back(name_process);
         }
         text_processor_.InsertCharacter(gal_character);
