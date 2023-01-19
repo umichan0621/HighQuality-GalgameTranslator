@@ -1,3 +1,17 @@
+common_process:
+  #---------------Process 1---------------#
+  - is_first_name:
+    is_tail:
+    is_translation_tail:
+    word:
+    translation:
+  #---------------Process 2---------------#
+  - is_first_name:
+    is_tail:
+    is_translation_tail:
+    word:
+    translation:
+
 character_name_list:
   #----------------Character 1----------------#
   - first_name:
