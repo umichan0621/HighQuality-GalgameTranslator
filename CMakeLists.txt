@@ -7,8 +7,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(SOURCE_DIR      ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(BUILD_DIR       ${CMAKE_CURRENT_SOURCE_DIR}/build)
 set(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
-
+add_definitions(-w)
 #------------------build submodule------------------#
+file(MAKE_DIRECTORY ${BUILD_DIR}/include)
 # glog
 add_subdirectory(third_party/glog)
 set(GLOG_INCLUDE_DIR    ${THIRD_PARTY_DIR}/glog/src/glog)
