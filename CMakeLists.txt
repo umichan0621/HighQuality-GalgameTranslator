@@ -4,22 +4,37 @@ project(test)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-#------------------build submodule------------------#
-add_subdirectory(third_party/TransInterface)
+set(SOURCE_DIR      ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(BUILD_DIR       ${CMAKE_CURRENT_SOURCE_DIR}/build)
+set(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
+#------------------build submodule------------------#
+# glog
+add_subdirectory(third_party/glog)
+set(GLOG_INCLUDE_DIR    ${THIRD_PARTY_DIR}/glog/src/glog)
+set(GLOG_LIB_DIR        ${BUILD_DIR}/third_party/glog)
+file(GLOB GLOG_LIB
+    ${GLOG_LIB_DIR}/libglog.so
+    ${GLOG_LIB_DIR}/libglog.so.0.7.0
+    ${GLOG_LIB_DIR}/libglog.so.1)
+# yaml-cpp
 if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     set(YAML_BUILD_SHARED_LIBS on)
     add_subdirectory(third_party/yaml-cpp)
 endif() 
+
+add_subdirectory(third_party/TransInterface)
+
+
 #------------------build submodule------------------#
 
 
-set(SOURCE_DIR      ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
+
 
 include_directories(
     ${SOURCE_DIR}
     ${THIRD_PARTY_DIR}/TransInterface/include/
+    ${GLOG_INCLUDE_DIR}
    # ${THIRD_PARTY_DIR}/yaml-cpp/include/
     )
 
@@ -50,5 +65,6 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     ${GAL_LIB}
+    ${GLOG_LIB}
     yaml-cpp
 )
