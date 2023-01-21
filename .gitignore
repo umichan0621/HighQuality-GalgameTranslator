@@ -5,5 +5,6 @@ __pycache__
 *.ini
 *.xlsx
 *.exe
+*.dll
 !/requirements.txt
 !/CMakeLists.txt

@@ -1,7 +1,8 @@
 mkdir %~dp0..\build
 cd %~dp0..\build
-echo %~dp0
-cmake -G "MinGW Makefiles" ..
 
-mingw32-make -j8
+cmake -G "MinGW Makefiles" ..
+mingw32-make install -j8 
+
+cd %~dp0..\test
 .\test.exe
