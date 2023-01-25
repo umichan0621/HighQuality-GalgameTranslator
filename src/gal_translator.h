@@ -13,7 +13,7 @@ public:
 
     void SetFile(const std::string& src_text_path);
 
-    void LoadConfig(const std::string& config_path);
+    bool LoadConfig(const std::string& config_path);
 
     void Translate();
 

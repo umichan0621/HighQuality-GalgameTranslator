@@ -30,7 +30,7 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     endif()
     set(GLOG_INCLUDE ${GLOG_BUILD_DIR}/include)
     file(GLOB GLOG_LIB ${TARGET_DIR}/libglog.dll)
-
+    
 #------------------build yaml-cpp-------------------#
     if(EXISTS ${TARGET_DIR}/libyaml-cpp.dll)
         message(STATUS "libyaml-cpp.dll found,skip...")
@@ -53,7 +53,7 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     else()
         file(COPY ${THIRD_PARTY_DIR}/TransInterface/libGoInterface.dll DESTINATION ${TARGET_DIR})
     endif()
-    set(GOINTERFACE_INCLUDE ${THIRD_PARTY_DIR}/TransInterface/include)
+    set(GOINTERFACE_INCLUDE ${THIRD_PARTY_DIR}/TransInterface)
     file(GLOB GOINTERFACE_LIB ${TARGET_DIR}/libGoInterface.dll)
 elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
 
