@@ -1,9 +1,7 @@
+#define GLOG_NO_ABBREVIATED_SEVERITIES
 #include "tencent_trans.h"
 
 #include <GoInterface.h>
-#ifndef __linux__
-#include <utils/utf8.hpp>
-#endif
 
 namespace gal {
 namespace trans {
@@ -22,11 +20,7 @@ std::string TencentTrans::Translate(const std::string& src_text) {
         const_cast<char*>(src_language_.c_str()),  // SrcLanguage: "jp"
         const_cast<char*>(des_language_.c_str()),  // DrcLanguage: "zh"
         const_cast<char*>(src_text.c_str()));      // SrcText: "Hello world"
-#ifndef __linux__
-    return utils::utf8_to_string(res);
-#else
     return res;
-#endif
 }
 
 }  // namespace trans
