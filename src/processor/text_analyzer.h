@@ -26,7 +26,8 @@ public:
 private:
     bool NeedTranslate(std::string* text);
 
-    void SplitTextByNewlineCharacter(std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text);
+    void SplitTextByNewlineCharacter(
+        std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text, const std::string& next_text);
 
     void SplitText(
         std::vector<utils::AnalyzerRes>* text_vec, const std::string& separator, const std::string& translation);

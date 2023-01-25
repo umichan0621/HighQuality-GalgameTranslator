@@ -31,9 +31,10 @@ std::vector<utils::AnalyzerRes> TextAnalyzer::Analyze(std::string text) {
     }
     // split text by newline character
     std::vector<std::string> split_res = utils::Split(text, newline_character_, true);
-    for (const std::string& sub_text : split_res) {
-        SplitTextByNewlineCharacter(&analyzer_res, sub_text);
+    for (int i = 0; i < split_res.size() - 1; ++i) {
+        SplitTextByNewlineCharacter(&analyzer_res, split_res[i], split_res[i + 1]);
     }
+    SplitTextByNewlineCharacter(&analyzer_res, split_res[split_res.size() - 1], "");
     // split text recursively
     for (const auto& separator : separator_) {
         SplitText(&analyzer_res, separator.first, separator.second);
@@ -42,7 +43,7 @@ std::vector<utils::AnalyzerRes> TextAnalyzer::Analyze(std::string text) {
 }
 
 void TextAnalyzer::SplitTextByNewlineCharacter(
-    std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text) {
+    std::vector<utils::AnalyzerRes>* analyzer_res, const std::string& sub_text, const std::string& next_text) {
     // text
     if (sub_text != newline_character_) {
         // merge two text that need to be translated
@@ -65,13 +66,15 @@ void TextAnalyzer::SplitTextByNewlineCharacter(
             return;
         }
     }
-    // separator at end of text
+    // processor separator
     for (const auto& separator : separator_) {
-        int pos = pre_res.text.find(separator.first);
-        if (pos < 0) {
+        int pos_pre = pre_res.text.find(separator.first);
+        int pos_next = next_text.find(separator.first);
+        if (pos_pre < 0 && pos_next < 0) {
             continue;
         }
-        if (pos + separator.first.size() == pre_res.text.size()) {
+        // separator at begin of next text / end of pre text
+        if (pos_next == 0 || pos_pre >= 0 && pos_pre + separator.first.size() == pre_res.text.size()) {
             analyzer_res->push_back({false, sub_text});
             return;
         }
