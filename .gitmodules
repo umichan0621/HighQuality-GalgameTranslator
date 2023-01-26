@@ -7,3 +7,6 @@
 [submodule "third_party/glog"]
 	path = third_party/glog
 	url = https://github.com/google/glog
+[submodule "third_party/mecab"]
+	path = third_party/mecab
+	url = https://github.com/umichan0621/mecab
