@@ -25,9 +25,11 @@ public:
 
     void InsertWord(const std::string& word, const std::string& translation, str_func random_str);
 
-    void InsertCharacter(const GalCharacter& gal_haracter);
+    void InsertCharacter(const GalCharacter& gal_character);
 
-    void InsertCharacter(const GalCharacter& gal_haracter, str_func random_str);
+    void InsertCharacter(const GalCharacter& gal_character, str_func random_str);
+
+    std::vector<std::vector<std::string>> ShowDict();
 
 private:
     const std::vector<std::string>& word_list();
