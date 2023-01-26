@@ -9,8 +9,9 @@ set(THIRD_PARTY_DIR     ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 set(TARGET_DIR          ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME})
 set(YAMLCPP_BUILD_DIR   ${THIRD_PARTY_DIR}/yaml-cpp/build)
 set(GLOG_BUILD_DIR      ${THIRD_PARTY_DIR}/glog/build)
+set(MECAB_BUILD_DIR     ${THIRD_PARTY_DIR}/mecab/build)
 
-file(MAKE_DIRECTORY ${TARGET_DIR})
+file(MAKE_DIRECTORY ${TARGET_DIR}/dic)
 
 #------------------build submodule------------------#
 
@@ -55,12 +56,36 @@ if(CMAKE_HOST_SYSTEM_NAME MATCHES "Windows")
     endif()
     set(GOINTERFACE_INCLUDE ${THIRD_PARTY_DIR}/TransInterface)
     file(GLOB GOINTERFACE_LIB ${TARGET_DIR}/libGoInterface.dll)
+
+#--------------------build mecab--------------------#
+    if(EXISTS ${TARGET_DIR}/libmecab.dll)
+        message(STATUS "libmecab.dll found,skip...")
+    else()
+        file(MAKE_DIRECTORY ${MECAB_BUILD_DIR})
+        execute_process(
+            COMMAND cmake -DCMAKE_INSTALL_PREFIX=${MECAB_BUILD_DIR} -G "MinGW Makefiles" ..
+            WORKING_DIRECTORY ${MECAB_BUILD_DIR})
+        execute_process(
+            COMMAND mingw32-make install --no-print-directory -j8
+            WORKING_DIRECTORY ${MECAB_BUILD_DIR})
+        file(GLOB DICT_FILES ${THIRD_PARTY_DIR}/mecab/mecab-ipadic/**)
+        file(COPY ${DICT_FILES} DESTINATION ${TARGET_DIR}/dic)
+        file(COPY ${MECAB_BUILD_DIR}/bin/libmecab.dll DESTINATION ${TARGET_DIR})
+    endif()
+    file(GLOB MECAB_LIB ${TARGET_DIR}/libmecab.dll)
+    set(MECAB_INCLUDE ${MECAB_BUILD_DIR}/include/mecab)
+
+
 elseif(CMAKE_HOST_SYSTEM_NAME MATCHES "Linux")
 
 else()
     message(ERROR "Unknown Platform...")
 endif()
 
+
+
+# file(GLOB YAMLCPP_LIB ${TARGET_DIR}/libyaml-cpp.dll)
+# set(YAMLCPP_INCLUDE ${THIRD_PARTY_DIR}/yaml-cpp/include)
 #------------------build submodule------------------#
 
 include_directories(
@@ -68,6 +93,7 @@ include_directories(
     ${GOINTERFACE_INCLUDE}
     ${GLOG_INCLUDE}
     ${YAMLCPP_INCLUDE}
+    ${MECAB_INCLUDE}
 )
 
 file(GLOB GAL_SRC
@@ -79,15 +105,14 @@ file(GLOB GAL_SRC
 
 add_executable(${PROJECT_NAME} 
     ${SOURCE_DIR}/gal.cpp
-    ${GAL_SRC}
-)
+    ${GAL_SRC})
 
 target_link_libraries(${PROJECT_NAME}
     ${GAL_LIB}
     ${GLOG_LIB}
     ${GOINTERFACE_LIB}
-    ${YAMLCPP_LIB})
+    ${YAMLCPP_LIB}
+    ${MECAB_LIB})
 
 install(TARGETS ${PROJECT_NAME}
-    RUNTIME DESTINATION ${TARGET_DIR}
-)
+    RUNTIME DESTINATION ${TARGET_DIR})
