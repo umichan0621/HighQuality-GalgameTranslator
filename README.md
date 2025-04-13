@@ -1,4 +1,4 @@
-# HighQuality-GalgameTranslator
+# 因AI翻译的效果显著改善，此项目废弃且不再维护
 
 ## About HighQuality-GalgameTranslator
 - 基于Python，用于翻译Galgame提取的特定格式日语文本的机器翻译程序
